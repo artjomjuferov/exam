@@ -1,0 +1,41 @@
+<html>
+<head>
+  <script type="text/javascript" src="jquery-1.10.2.min.js"></script>
+  <script type="text/javascript" src="script.js"></script>
+  <script type="text/javascript">
+    // $('#myCanvas').height =
+  </script>
+  <style type="text/css">
+    body{
+      position: relative;
+    }
+    .canvas{
+      float: right;
+      margin-right: 400px;
+    }
+    ul{
+      float: left;
+    }
+  </style>
+  <script type="text/javascript" src="delaunay.js">
+  </script>
+</head>
+<body>
+    <ul>
+      <li>
+        <button id="drawPoints">Draw random points</button>
+      </li>
+      <li>
+        <button id="triangulate">Triangulate</button>
+      </li>
+    </ul>
+    <div class="canvas">
+      <canvas id="myCanvas" height="320" width="640"></canvas>
+    </div>
+    <ul>
+      <li>
+        <input type='file' id="imgInput"/>
+      </li>
+    </ul>
+</body>
+</html>
