@@ -7,7 +7,7 @@ $(document).ready(function(){
 
   var canvas = new Canvas('myCanvas');
   
-  var points = createRandomPoints(canvas, 20);
+  var points = []//;createRandomPoints(canvas, 20);
   points.push(new Point(50,50,-10));
   points.push(new Point(250,50,10));
   points.push(new Point(250,150,-90));
