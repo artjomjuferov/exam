@@ -7,12 +7,8 @@ $(document).ready(function(){
 
   var canvas = new Canvas('myCanvas');
   window.canvas = canvas;
-  var points = [];//createRandomPoints(canvas, 20);
-  points.push([50,50,0]);
-  points.push([250,50,30]);
-  points.push([250,150,10]);
-  // points.push([50,150,-90]);
-  
+  var points = createRandomPoints(canvas, 50);
+  console.log(points);
   
   $("#imgInput").change(function(){
     canvas.getImageToBg(this);
