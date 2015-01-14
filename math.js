@@ -50,9 +50,9 @@ function Triangle(p1, p2, p3) {
 Triangle.prototype = {
     init: function(p1, p2, p3) {
         // vertex access
-        this[0] = new Point(p1[0], p1[1]);
-        this[1] = new Point(p2[0], p2[1]);
-        this[2] = new Point(p3[0], p3[1]);
+        this[0] = new Point(p1[0], p1[1], p1[2]);
+        this[1] = new Point(p2[0], p2[1], p2[2]);
+        this[2] = new Point(p3[0], p3[1], p3[2]);
  
         // edge access
         this.edges = [

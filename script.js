@@ -1,21 +1,21 @@
 $(document).ready(function(){
   window.maxT = 100;
-  window.maxColor = [1,0,0,1];
+  window.maxColor = [1,0,0];
   window.minT = -100;
-  window.minColor = [0,0,1,1];
+  window.minColor = [0,0,1];
   window.opacity = 1;
 
   var canvas = new Canvas('myCanvas');
   window.canvas = canvas;
-  var points = createRandomPoints(canvas, 20);
-  // points.push([50,50,-10]);
-  // points.push([250,50,10]);
-  // points.push([250,150,-90]);
+  var points = [];//createRandomPoints(canvas, 20);
+  points.push([50,50,-10]);
+  points.push([250,50,10]);
+  points.push([250,150,-90]);
   // points.push([5,5,-10]);
   // points.push([20,50,10]);
   // points.push([50,150,-90]);
-
-
+  
+  
   $("#imgInput").change(function(){
     canvas.getImageToBg(this);
     var image = new Image();
@@ -36,6 +36,7 @@ $(document).ready(function(){
     window.imageData = ctx.createImageData(cnvs.width,
         cnvs.height)
     for (var i = 0; i < triangules.length; i++) {
+      console.log(triangules[i]);
       drawTriangle(cnvs, window.imageData, triangules[i]);
     }
     ctx.putImageData(window.imageData, 0, 0);
@@ -58,8 +59,10 @@ var triangulate = function(points){
     var p2 = [vertices[triangles[i]][0], vertices[triangles[i]][1], points[triangles[i]][2]];
     --i; 
     var p3 = [vertices[triangles[i]][0], vertices[triangles[i]][1], points[triangles[i]][2]];
+    
     resultTriangles.push(new Triangle(p1,p2,p3));
   }
+  console.log(resultTriangles);
   return resultTriangles;
 }
 
