@@ -20,10 +20,17 @@ function process(canvas, imageData, func) {
 function drawTriangle (canvas, imageData, triangle) {
     var padding = canvas.width * 0.1;
     
-    triangle[0].color = [0.3, 0, 0, 0.4]; // red
-    triangle[1].color = [0, 1, 0, 1]; // green
-    triangle[2].color = [0, 0, 1, 1]; // blue
-
+    var c0 = Math.abs(triangle[0].t-window.minT)/Math.abs(window.maxT-window.minT);  
+    var c1 = Math.abs(triangle[1].t-window.minT)/Math.abs(window.maxT-window.minT);  
+    var c2 = Math.abs(triangle[2].t-window.minT)/Math.abs(window.maxT-window.minT);  
+    
+    triangle[0].color = [window.maxColor[0]/c0, window.maxColor[1]/c0, window.maxColor[2]/c0, window.maxColor[3]];
+    triangle[1].color = [window.maxColor[0]/c1, window.maxColor[1]/c1, window.maxColor[2]/c1, window.maxColor[3]];
+    triangle[2].color = [window.maxColor[0]/c2, window.maxColor[1]/c2, window.maxColor[2]/c2, window.maxColor[3]];
+    console.log(triangle[0].color);
+    console.log(triangle[1].color);
+    console.log(triangle[2].color);
+    
     var triangleGradient = function(point) {
         var DEFAULTCOLOR = [0, 0, 0, 0];
         var ret = [0, 0, 0, 0];

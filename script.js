@@ -1,8 +1,8 @@
 $(document).ready(function(){
   window.maxT = 100;
-  window.maxColor = "red";
+  window.maxColor = [1,0,0,1];
   window.minT = -100;
-  window.minColor = "blue";
+  window.minColor = [0,0,1,1];
   window.opacity = 1;
 
   var canvas = new Canvas('myCanvas');
