@@ -15,6 +15,7 @@ $(document).ready(function(){
   // points.push([20,50,10]);
   // points.push([50,150,-90]);
 
+
   $("#imgInput").change(function(){
     canvas.getImageToBg(this);
     var image = new Image();
