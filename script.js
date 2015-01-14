@@ -7,7 +7,7 @@ $(document).ready(function(){
 
   var canvas = new Canvas('myCanvas');
   
-  var points = createRandomPoints(canvas, 20);
+  var points = [];//createRandomPoints(canvas, 20);
   points.push(new Point(50,50,-10));
   points.push(new Point(250,50,10));
   points.push(new Point(250,150,-90));
@@ -112,24 +112,24 @@ Canvas.prototype.ctx = function() {
   return this.element.getContext('2d');
 };
 Canvas.prototype.drawSide = function(side) {
-  ctx = this.ctx();
+  var ctx = this.ctx();
   ctx.beginPath();
   ctx.moveTo(side.p1.x,side.p1.y);
   ctx.lineTo(side.p2.x,side.p2.y);
   ctx.stroke();
 };
 Canvas.prototype.drawTriangle = function (triangle){
-  ctx = this.ctx();
+  var ctx = this.ctx();
   ctx.globalAlpha = window.opacity;
   ctx.beginPath();
   
-  var minP = triangle.minPoint;
-  var maxP = triangle.maxPoint;
+  // var minP = triangle.minPoint;
+  // var maxP = triangle.maxPoint;
   
   var gradient = ctx.createLinearGradient(minP.x, minP.y, maxP.x, maxP.y);
   
-  var startG = Math.abs(minP.z-window.minT)/Math.abs(window.maxT-window.minT)  
-  var stopG = Math.abs(maxP.z-window.minT)/Math.abs(window.maxT-window.minT)
+  var startG = Math.abs(minP.z-window.minT)/Math.abs(window.maxT-window.minT);  
+  var stopG = Math.abs(maxP.z-window.minT)/Math.abs(window.maxT-window.minT);
   
   gradient.addColorStop(String(startG), window.minColor);
   gradient.addColorStop(String(stopG), window.maxColor);
@@ -147,7 +147,7 @@ Canvas.prototype.drawTriangle = function (triangle){
 
 Canvas.prototype.drawPoint = function (point){
   var r = 5;
-  ctx = this.ctx();
+  var ctx = this.ctx();
   ctx.beginPath();
   ctx.arc(point.x, point.y, r, 0, 2 * Math.PI, false);
   ctx.fill();
