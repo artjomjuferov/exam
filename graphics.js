@@ -43,11 +43,6 @@ function drawTriangle (canvas, imageData, triangle) {
     triangle[2].color[2] = triangle[2].color[2]/255;
     triangle[2].color[3] = 1;
     
-    console.log(triangle[0].color);
-    console.log(triangle[1].color);
-    console.log(triangle[2].color);
-    
-    
     var triangleGradient = function(point) {
         var DEFAULTCOLOR = [0, 0, 0, 0];
         var ret = [0, 0, 0, 0];
