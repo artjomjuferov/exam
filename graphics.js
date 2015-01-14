@@ -24,16 +24,30 @@ function drawTriangle (canvas, imageData, triangle) {
     var c1 = Math.abs(triangle[1].t-window.minT)/Math.abs(window.maxT-window.minT);  
     var c2 = Math.abs(triangle[2].t-window.minT)/Math.abs(window.maxT-window.minT);  
     
-    // var color1 = Color().rgb([255, 0, 0]);
-    // var color2 = Color().rgb([0, 0, 255]);
-    // var mix = color1.mix(Color("blue"), 0.1);
-    // console.log(triangle[0].t);
-    // console.log(triangle[1].t);
-    // console.log(triangle[2].t);
     triangle[0].color = Color().rgb(window.minColor).mix(Color().rgb(window.maxColor), c0).values.rgb;
     triangle[1].color = Color().rgb(window.minColor).mix(Color().rgb(window.maxColor), c1).values.rgb;
     triangle[2].color = Color().rgb(window.minColor).mix(Color().rgb(window.maxColor), c2).values.rgb;
-    // console.log(triangle[0].color);
+    
+    triangle[0].color[0] = triangle[0].color[0]/255;
+    triangle[0].color[1] = triangle[0].color[1]/255;
+    triangle[0].color[2] = triangle[0].color[2]/255;
+    triangle[0].color[3] = 1;
+    
+    triangle[1].color[0] = triangle[1].color[0]/255;
+    triangle[1].color[1] = triangle[1].color[1]/255;
+    triangle[1].color[2] = triangle[1].color[2]/255;
+    triangle[1].color[3] = 1;
+    
+    triangle[2].color[0] = triangle[2].color[0]/255;
+    triangle[2].color[1] = triangle[2].color[1]/255;
+    triangle[2].color[2] = triangle[2].color[2]/255;
+    triangle[2].color[3] = 1;
+    
+    console.log(triangle[0].color);
+    console.log(triangle[1].color);
+    console.log(triangle[2].color);
+    
+    
     var triangleGradient = function(point) {
         var DEFAULTCOLOR = [0, 0, 0, 0];
         var ret = [0, 0, 0, 0];

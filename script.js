@@ -1,18 +1,16 @@
 $(document).ready(function(){
-  window.maxT = 100;
-  window.maxColor = [1,0,0];
-  window.minT = -100;
-  window.minColor = [0,0,1];
+  window.maxT = 30;
+  window.maxColor = [0,0,255];
+  window.minT = -30;
+  window.minColor = [255,0,0];
   window.opacity = 1;
 
   var canvas = new Canvas('myCanvas');
   window.canvas = canvas;
   var points = [];//createRandomPoints(canvas, 20);
-  points.push([50,50,-10]);
-  points.push([250,50,10]);
-  points.push([250,150,-90]);
-  // points.push([5,5,-10]);
-  // points.push([20,50,10]);
+  points.push([50,50,0]);
+  points.push([250,50,30]);
+  points.push([250,150,10]);
   // points.push([50,150,-90]);
   
   
@@ -36,7 +34,6 @@ $(document).ready(function(){
     window.imageData = ctx.createImageData(cnvs.width,
         cnvs.height)
     for (var i = 0; i < triangules.length; i++) {
-      console.log(triangules[i]);
       drawTriangle(cnvs, window.imageData, triangules[i]);
     }
     ctx.putImageData(window.imageData, 0, 0);
