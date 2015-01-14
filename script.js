@@ -7,13 +7,13 @@ $(document).ready(function(){
 
   var canvas = new Canvas('myCanvas');
   window.canvas = canvas;
-  var points = [];//createRandomPoints(canvas, 20);
-  points.push([50,50,-10]);
-  points.push([250,50,10]);
-  points.push([250,150,-90]);
-  points.push([5,5,-10]);
-  points.push([20,50,10]);
-  points.push([50,150,-90]);
+  var points = createRandomPoints(canvas, 20);
+  // points.push([50,50,-10]);
+  // points.push([250,50,10]);
+  // points.push([250,150,-90]);
+  // points.push([5,5,-10]);
+  // points.push([20,50,10]);
+  // points.push([50,150,-90]);
 
   $("#imgInput").change(function(){
     canvas.getImageToBg(this);
