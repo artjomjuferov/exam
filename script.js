@@ -7,7 +7,7 @@ $(document).ready(function(){
 
   var canvas = new Canvas('myCanvas');
   window.canvas = canvas;
-  var points = createRandomPoints(canvas, 20);
+  var points = createRandomPoints(canvas, 15);
   console.log(points);
   
   $("#imgInput").change(function(){
@@ -41,8 +41,10 @@ $(document).ready(function(){
     window.trgImg.src = backCanvas.toDataURL("image/png");
     
     var cnvs = window.canvas.element;
-    cnvs.getContext("2d").drawImage(window.bg,0,0);
-    cnvs.getContext("2d").drawImage(window.trgImg,0,0);
+    if (window.bg !== undefined)
+      cnvs.getContext("2d").drawImage(window.bg,0,0);
+    if (window.trgImg !== undefined)
+      cnvs.getContext("2d").drawImage(window.trgImg,0,0);
     
   });
 });
@@ -96,12 +98,18 @@ Canvas.prototype.drawSide = function(side) {
 };
 
 Canvas.prototype.drawPoint = function (point){
-  var r = 5;
+  var r = 3;
+  var c = Math.abs(point.t-window.minT)/Math.abs(window.maxT-window.minT);  
+  var color = Color().rgb(window.minColor).mix(Color().rgb(window.maxColor), c);
+  color = 'rgb(' + color.red() + ',' + color.green() + ',' + color.blue() + ')';
+  console.log(color);
   var ctx = this.ctx();
   ctx.beginPath();
   ctx.arc(point.x, point.y, r, 0, 2 * Math.PI, false);
+  ctx.fillStyle = color;
   ctx.fill();
-  ctx.stroke();
+  // ctx.strokStyle = color;
+  // ctx.stroke();
 };
 Canvas.prototype.clearCanvas = function(){
   var ctx = this.ctx();

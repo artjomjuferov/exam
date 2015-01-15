@@ -31,17 +31,17 @@ function drawTriangle (canvas, imageData, triangle) {
     triangle[0].color[0] = triangle[0].color[0]/255;
     triangle[0].color[1] = triangle[0].color[1]/255;
     triangle[0].color[2] = triangle[0].color[2]/255;
-    triangle[0].color[3] = 0.2;
+    triangle[0].color[3] = 0.3;
     
     triangle[1].color[0] = triangle[1].color[0]/255;
     triangle[1].color[1] = triangle[1].color[1]/255;
     triangle[1].color[2] = triangle[1].color[2]/255;
-    triangle[1].color[3] = 0.2;
+    triangle[1].color[3] = 0.3;
     
     triangle[2].color[0] = triangle[2].color[0]/255;
     triangle[2].color[1] = triangle[2].color[1]/255;
     triangle[2].color[2] = triangle[2].color[2]/255;
-    triangle[2].color[3] = 0.2;
+    triangle[2].color[3] = 0.3;
     
     var triangleGradient = function(point) {
         var DEFAULTCOLOR = [0, 0, 0, 0];
