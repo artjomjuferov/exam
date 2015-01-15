@@ -9,7 +9,7 @@
   
   <style type="text/css">
     body{
-      position: relative;
+      position: fixed;
     }
     .canvas{
       float: right;
@@ -21,21 +21,37 @@
   </style>
 </head>
 <body>
+  <div>
     <ul>
       <li>
-        <button id="drawPoints">Draw random points</button>
+        1. Add map
+      </li>
+      <li>
+        2. Draw points
+      </li>
+      <li>
+        3. Triangulate
+      </li>
+      <li>
+        4. wait 1 min
+      </li>
+    </ul>
+  </div>
+  <div>
+    <ul>
+      <li>
+        <button id="drawPoints">Draw points</button>
       </li>
       <li>
         <button id="triangulate">Triangulate</button>
       </li>
-    </ul>
-    <div class="canvas">
-      <canvas id="myCanvas" height="320" width="640"></canvas>
-    </div>
-    <ul>
       <li>
         <input type='file' id="imgInput"/>
       </li>
     </ul>
+  </div>
+  <div class="canvas">
+    <canvas id="myCanvas" height="320" width="640"></canvas>
+  </div>
 </body>
 </html>

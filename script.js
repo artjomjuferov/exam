@@ -7,14 +7,14 @@ $(document).ready(function(){
 
   var canvas = new Canvas('myCanvas');
   window.canvas = canvas;
-  var points = createRandomPoints(canvas, 50);
+  var points = createRandomPoints(canvas, 20);
   console.log(points);
   
   $("#imgInput").change(function(){
     canvas.getImageToBg(this);
     var image = new Image();
     image.src = canvas.element.toDataURL("image/png").replace("image/png", "image/octet-stream");
-    canvas.bg = image;
+    window.bg = image;
   });
 
   $("#drawPoints").click(function () {
@@ -25,14 +25,25 @@ $(document).ready(function(){
 
   $("#triangulate").click(function () {
     var triangules = triangulate(points);
-    var cnvs = window.canvas.element;
-    var ctx = cnvs.getContext("2d");
-    window.imageData = ctx.createImageData(cnvs.width,
-        cnvs.height)
+    
+    var backCanvas = document.createElement('canvas');
+    backCanvas.width = window.canvas.element.width;
+    backCanvas.height = window.canvas.element.height;
+    var ctx = backCanvas.getContext('2d');
+    window.imageData = ctx.createImageData(backCanvas.width,
+        backCanvas.height)
     for (var i = 0; i < triangules.length; i++) {
-      drawTriangle(cnvs, window.imageData, triangules[i]);
+      drawTriangle(backCanvas, window.imageData, triangules[i]);
     }
+    
     ctx.putImageData(window.imageData, 0, 0);
+    window.trgImg = new Image()
+    window.trgImg.src = backCanvas.toDataURL("image/png");
+    
+    var cnvs = window.canvas.element;
+    cnvs.getContext("2d").drawImage(window.bg,0,0);
+    cnvs.getContext("2d").drawImage(window.trgImg,0,0);
+    
   });
 });
 
@@ -55,7 +66,6 @@ var triangulate = function(points){
     
     resultTriangles.push(new Triangle(p1,p2,p3));
   }
-  console.log(resultTriangles);
   return resultTriangles;
 }
 
@@ -84,35 +94,6 @@ Canvas.prototype.drawSide = function(side) {
   ctx.lineTo(side.p2.x,side.p2.y);
   ctx.stroke();
 };
-// Canvas.prototype.drawTriangle = function (triangle, maxT, minT){
-//   var ctx = this.ctx();
-//   ctx.globalAlpha = window.opacity;
-//   ctx.beginPath();
-  
-//   var minP = triangle[1];
-//   var maxP = triangle[0];
-
-//   var gradient = ctx.createLinearGradient(minP.x, minP.y, maxP.x, maxP.y);
-  
-//   var startG = Math.abs(minP.t-window.minT)/Math.abs(window.maxT-window.minT);  
-//   var stopG = Math.abs(maxP.t-window.minT)/Math.abs(window.maxT-window.minT);
-  
-//   console.log(minP);
-//   console.log(maxP);
-  
-//   gradient.addColorStop(String(startG), window.minColor);
-//   gradient.addColorStop(String(stopG), window.maxColor);
-
-//   ctx.moveTo(triangle[0].x,triangle[0].y);
-//   ctx.lineTo(triangle[1].x,triangle[1].y);
-//   ctx.lineTo(triangle[2].x,triangle[2].y);
-  
-//   ctx.fillStyle = gradient;
-//   ctx.fill();
-  
-//   ctx.stroke();
-//   ctx.restore();
-// };
 
 Canvas.prototype.drawPoint = function (point){
   var r = 5;
