@@ -99,9 +99,8 @@ Canvas.prototype.drawSide = function(side) {
 
 Canvas.prototype.drawPoint = function (point){
   var r = 3;
-  var c = Math.abs(point.t-window.minT)/Math.abs(window.maxT-window.minT);  
-  var color = Color().rgb(window.minColor).mix(Color().rgb(window.maxColor), c);
-  color = 'rgb(' + color.red() + ',' + color.green() + ',' + color.blue() + ')';
+  var color = getColor(point.t, window.maxT, window.minT, 0.4);
+  color = 'rgb(' + color[0]*255 + ',' + color[1]*255 + ',' + color[2]*255 + ')';
   console.log(color);
   var ctx = this.ctx();
   ctx.beginPath();
